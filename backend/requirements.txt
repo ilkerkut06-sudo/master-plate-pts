@@ -11,8 +11,8 @@ opencv-python==4.8.1.78
 opencv-contrib-python==4.8.1.78
 numpy==1.24.3
 pillow==10.1.0
-paddlepaddle==2.5.2
-paddleocr==2.7.0.3
+paddlepaddle==3.2.1
+paddleocr==2.8.1
 easyocr==1.7.1
 pytesseract==0.3.10
 ultralytics==8.0.232
