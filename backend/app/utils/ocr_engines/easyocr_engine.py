@@ -1,7 +1,13 @@
 import cv2
 import numpy as np
 from typing import Optional, Tuple
-import easyocr
+
+try:
+    import easyocr
+    EASYOCR_AVAILABLE = True
+except Exception as e:
+    print(f"EasyOCR not available: {e}")
+    EASYOCR_AVAILABLE = False
 
 class EasyOCREngine:
     """EasyOCR engine for Turkish plate recognition"""
