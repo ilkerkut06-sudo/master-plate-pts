@@ -1,0 +1,33 @@
+# Full requirements with all OCR engines
+# Use this if you want all features
+
+# Core FastAPI
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+python-multipart==0.0.6
+python-dotenv==1.0.0
+
+# Database
+motor==3.3.2
+
+# Image Processing
+opencv-python==4.8.1.78
+numpy==1.24.3
+pillow==10.1.0
+
+# WebSocket
+websockets==12.0
+aiofiles==23.2.1
+
+# OCR Engines (may take long to install)
+paddlepaddle
+paddleocr
+easyocr
+pytesseract
+ultralytics
+
+# Camera Support
+onvif-zeep==0.2.12
+ffmpeg-python==0.2.0
