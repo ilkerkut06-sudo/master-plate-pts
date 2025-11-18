@@ -57,19 +57,25 @@ call venv\Scripts\activate.bat
 echo Upgrading pip and setuptools...
 python -m pip install --upgrade pip setuptools wheel
 if errorlevel 1 (
-    echo [ERROR] Failed to upgrade pip!
-    pause
-    exit /b 1
+    echo [WARNING] Failed to upgrade pip, continuing anyway...
 )
-echo Installing dependencies...
-pip install -r requirements.txt
+echo.
+echo Installing core dependencies (minimal version)...
+echo This will install FastAPI, OpenCV, and basic components.
+echo For full OCR support, you can manually install later.
+echo.
+pip install -r requirements_minimal.txt
 if errorlevel 1 (
     echo [ERROR] Failed to install Python packages!
-    echo Check error messages above.
+    echo.
+    echo Troubleshooting:
+    echo - Make sure you have Visual C++ Build Tools installed
+    echo - Try running as Administrator
+    echo - Check your internet connection
     pause
     exit /b 1
 )
-echo [OK] Python packages installed
+echo [OK] Core packages installed
 echo.
 
 REM Check Tesseract
