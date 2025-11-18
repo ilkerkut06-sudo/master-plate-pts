@@ -14,6 +14,11 @@ class PaddleEngine:
     """PaddleOCR engine for Turkish plate recognition"""
     
     def __init__(self):
+        if not PADDLE_AVAILABLE:
+            print("PaddleOCR library not available")
+            self.initialized = False
+            return
+            
         try:
             # Suppress PaddlePaddle warnings
             os.environ['FLAGS_allocator_strategy'] = 'auto_growth'
