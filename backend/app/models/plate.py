@@ -25,5 +25,3 @@ class Plate(BaseModel):
                 "ocr_engine": "hybrid"
             }
         }
-
-from typing import Literal
