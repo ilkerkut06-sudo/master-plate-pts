@@ -1,8 +1,14 @@
 import cv2
 import numpy as np
 from typing import Optional, Tuple
-from paddleocr import PaddleOCR
 import os
+
+try:
+    from paddleocr import PaddleOCR
+    PADDLE_AVAILABLE = True
+except Exception as e:
+    print(f"PaddleOCR not available: {e}")
+    PADDLE_AVAILABLE = False
 
 class PaddleEngine:
     """PaddleOCR engine for Turkish plate recognition"""
