@@ -1,0 +1,159 @@
+===================================================
+EvoPlate Enterprise Edition - Installation Guide
+===================================================
+
+PREREQUISITES
+=============
+
+1. Python 3.9 or higher
+   Download: https://www.python.org/downloads/
+   IMPORTANT: Check "Add Python to PATH" during installation!
+
+2. Node.js 16 or higher
+   Download: https://nodejs.org/
+
+3. MongoDB Community Edition
+   Download: https://www.mongodb.com/try/download/community
+   After installation, start the service:
+   > net start MongoDB
+
+4. Tesseract OCR (Optional)
+   Download: https://github.com/UB-Mannheim/tesseract/wiki
+   IMPORTANT: Add to PATH after installation
+
+5. FFmpeg (Optional but recommended)
+   Download: https://www.gyan.dev/ffmpeg/builds/
+   IMPORTANT: Add to PATH after installation
+
+---
+
+INSTALLATION STEPS
+==================
+
+First Time Installation:
+------------------------
+
+1. Install all prerequisites listed above
+2. Start MongoDB service: net start MongoDB
+3. Double-click "setup_install.bat"
+4. The script will:
+   - Create Python virtual environment
+   - Install all dependencies
+   - Setup frontend packages
+   - Start backend and frontend
+   - Open browser automatically
+
+Next Time (Quick Start):
+------------------------
+
+1. Make sure MongoDB is running
+2. Double-click "quick_start.bat"
+3. System will start and browser will open
+
+---
+
+SYSTEM URLs
+===========
+
+Backend: http://localhost:8000
+Frontend: http://localhost:3000
+API Documentation: http://localhost:8000/docs
+
+---
+
+ADDING FIRST CAMERA
+===================
+
+1. Go to Dashboard > Cameras menu
+2. Click "New Camera" button
+3. Select camera type:
+   - RTSP: For IP cameras (rtsp://username:password@ip:port/stream)
+   - ONVIF: For ONVIF-enabled cameras
+   - Webcam: For USB webcams (index: 0, 1, 2...)
+4. Click "Save"
+5. Return to Dashboard and start the camera
+
+---
+
+CHANGING OCR ENGINE
+===================
+
+1. Go to Settings menu
+2. In "OCR Engine Selection" section, choose engine:
+   - PaddleOCR: Fast and accurate
+   - EasyOCR: Good Turkish character support
+   - Tesseract: Open source
+   - YOLO: Plate detection only
+   - Hybrid: Best result (recommended)
+
+---
+
+STOPPING THE SYSTEM
+===================
+
+Close the Backend and Frontend terminal windows or press CTRL+C
+
+---
+
+TROUBLESHOOTING
+===============
+
+MongoDB connection error:
+- Make sure MongoDB service is running: net start MongoDB
+- MongoDB must run on default port (27017)
+
+Camera won't connect:
+- Verify RTSP URL is correct
+- Check webcam index is correct (usually 0)
+- Firewall may be blocking camera connection
+
+OCR not working:
+- At least one OCR engine must be installed (PaddleOCR and EasyOCR install automatically)
+- If using Tesseract, make sure it's added to PATH
+- Use "Hybrid" mode for best results
+
+Frontend won't open:
+- Port 3000 may be in use by another application
+- Check terminal for error messages
+
+Backend won't start:
+- Port 8000 may be in use
+- Check backend terminal for error messages
+- Make sure MongoDB is running
+
+---
+
+TECHNICAL DETAILS
+=================
+
+Dual Pipeline Architecture:
+- Pipeline A (Live): Low resolution, never freezes, WebSocket stream
+- Pipeline B (OCR): High resolution, ROI + Motion Detection, plate recognition
+
+Hybrid OCR:
+All OCR engines run in parallel:
+- PaddleOCR
+- EasyOCR
+- Tesseract
+- YOLO (plate detection)
+
+The result with highest confidence score is selected.
+
+Optimizations:
+- ROI (Region of Interest): Only plate region is processed
+- Motion Detection: OCR doesn't run if no motion (saves CPU)
+- WebSocket: Real-time streaming and events
+
+---
+
+SUPPORT
+=======
+
+If you encounter issues:
+1. Check log files in logs/ folder
+2. Check error messages in terminal windows
+3. Verify MongoDB, Python, Node.js versions
+
+===================================================
+Enjoy using EvoPlate Enterprise!
+===================================================
