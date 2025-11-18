@@ -54,10 +54,18 @@ echo.
 REM Install Python packages
 echo [5/10] Installing Python packages (this may take several minutes)...
 call venv\Scripts\activate.bat
-pip install --upgrade pip --quiet
-pip install -r requirements.txt --quiet
+echo Upgrading pip and setuptools...
+python -m pip install --upgrade pip setuptools wheel
+if errorlevel 1 (
+    echo [ERROR] Failed to upgrade pip!
+    pause
+    exit /b 1
+)
+echo Installing dependencies...
+pip install -r requirements.txt
 if errorlevel 1 (
     echo [ERROR] Failed to install Python packages!
+    echo Check error messages above.
     pause
     exit /b 1
 )
