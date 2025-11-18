@@ -13,6 +13,11 @@ class EasyOCREngine:
     """EasyOCR engine for Turkish plate recognition"""
     
     def __init__(self):
+        if not EASYOCR_AVAILABLE:
+            print("EasyOCR library not available")
+            self.initialized = False
+            return
+            
         try:
             # Initialize with Turkish and English
             self.reader = easyocr.Reader(['tr', 'en'], gpu=False, verbose=False)
