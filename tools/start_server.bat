@@ -1,7 +1,7 @@
 @echo off
-chcp 65001 >nul
+chcp 65001 >nul 2>&1
 echo ===================================================
-echo EvoPlate Enterprise Edition - Server Başlat
+echo EvoPlate Enterprise Edition - Server Baslat
 echo ===================================================
 echo.
 

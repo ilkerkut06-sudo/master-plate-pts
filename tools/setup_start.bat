@@ -1,5 +1,5 @@
 @echo off
-chcp 65001 >nul
+chcp 65001 >nul 2>&1
 echo ===================================================
 echo EvoPlate Enterprise Edition - Otomatik Kurulum
 echo ===================================================
@@ -11,7 +11,7 @@ python --version >nul 2>&1
 if errorlevel 1 (
     echo [HATA] Python bulunamadi!
     echo Python 3.9+ yukleyin: https://www.python.org/downloads/
-    echo Kurulum sirasinda "Add Python to PATH" secenegini isaretleyin!
+    echo Kurulum sirasinda Add Python to PATH secenegini isaretleyin!
     pause
     exit /b 1
 )
@@ -34,7 +34,7 @@ REM Check if MongoDB is running
 echo [3/10] MongoDB kontrol ediliyor...
 echo [UYARI] MongoDB kurulu ve calisir durumda olmalidir!
 echo MongoDB Community Edition: https://www.mongodb.com/try/download/community
-echo MongoDB kurulumu sonrasi servisi baslatin: "net start MongoDB"
+echo MongoDB kurulumu sonrasi servisi baslatin: net start MongoDB
 pause
 echo.
 
@@ -53,7 +53,7 @@ if exist venv (
 echo.
 
 REM Activate virtual environment and install dependencies
-echo [5/10] Python kutuphaneleri yukleniyor (bu birkaç dakika surebilir)...
+echo [5/10] Python kutuphaneleri yukleniyor (bu birka dakika surebilir)...
 call venv\Scripts\activate.bat
 pip install --upgrade pip
 pip install -r requirements.txt
@@ -72,7 +72,7 @@ if errorlevel 1 (
     echo [UYARI] Tesseract OCR bulunamadi!
     echo Manuel yukleyin: https://github.com/UB-Mannheim/tesseract/wiki
     echo Kurulum sonrasi PATH'e ekleyin veya Tesseract olmadan devam edebilirsiniz
-    echo (Diger OCR motorlari kullanilabilir)
+    echo Diger OCR motorlari kullanilabilir
     pause
 )
 echo.
