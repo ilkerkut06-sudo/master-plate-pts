@@ -1,0 +1,189 @@
+===================================================
+EvoPlate Enterprise - Quick Start Guide
+===================================================
+
+PROBLEM: Setuptools or pip errors during installation?
+
+SOLUTION: Follow these steps:
+
+---
+
+STEP 1: Install Prerequisites
+==============================
+
+1. Python 3.9 or higher
+   Download: https://www.python.org/downloads/
+   
+   IMPORTANT during installation:
+   [X] Add Python to PATH  <-- Check this box!
+   [X] Install pip
+   
+2. Node.js 16 or higher
+   Download: https://nodejs.org/
+   Choose LTS version
+
+3. MongoDB Community Edition
+   Download: https://www.mongodb.com/try/download/community
+   
+   After installation:
+   - Open Command Prompt as Administrator
+   - Run: net start MongoDB
+
+4. Visual C++ Build Tools (REQUIRED for Python packages)
+   Download: https://visualstudio.microsoft.com/visual-cpp-build-tools/
+   
+   During installation, select:
+   [X] Desktop development with C++
+   
+   This fixes most "setuptools" errors!
+
+---
+
+STEP 2: Verify Installation
+============================
+
+Open Command Prompt and check:
+
+> python --version
+Should show: Python 3.9.x or higher
+
+> node --version  
+Should show: v16.x.x or higher
+
+> pip --version
+Should show pip version
+
+If any command fails:
+- Python not in PATH: Reinstall Python with "Add to PATH" checked
+- Node not found: Reinstall Node.js
+
+---
+
+STEP 3: Run Setup
+=================
+
+1. Extract the project to: C:\EvoPlate
+   (Avoid paths with spaces or special characters)
+
+2. Navigate to tools folder:
+   > cd C:\EvoPlate\tools
+
+3. Run setup:
+   > setup_install.bat
+
+4. Wait 5-10 minutes for installation
+
+5. System will start automatically
+
+---
+
+STEP 4: Access System
+=====================
+
+After successful installation:
+
+Frontend: http://localhost:3000
+Backend: http://localhost:8000
+
+---
+
+COMMON ERRORS & FIXES
+=====================
+
+1. "setuptools.build_meta" error:
+   FIX: Install Visual C++ Build Tools (see Step 1.4)
+
+2. "Python not recognized":
+   FIX: Add Python to PATH
+   - Search "Environment Variables" in Windows
+   - Add Python installation folder to PATH
+   - Restart Command Prompt
+
+3. "MongoDB connection failed":
+   FIX: Start MongoDB service
+   > net start MongoDB
+
+4. "Port 3000 already in use":
+   FIX: Close other applications using port 3000
+   Or change port in frontend/.env
+
+5. "Permission denied" errors:
+   FIX: Run Command Prompt as Administrator
+
+6. Installation freezes:
+   FIX: Check your internet connection
+   FIX: Disable antivirus temporarily
+
+---
+
+MANUAL INSTALLATION (If batch fails)
+====================================
+
+1. Open Command Prompt in backend folder:
+   > cd C:\EvoPlate\backend
+
+2. Create virtual environment:
+   > python -m venv venv
+
+3. Activate it:
+   > venv\Scripts\activate
+
+4. Upgrade pip:
+   > python -m pip install --upgrade pip setuptools wheel
+
+5. Install minimal requirements:
+   > pip install -r requirements_minimal.txt
+
+6. Start backend:
+   > python run_simple.py
+
+7. In new Command Prompt, navigate to frontend:
+   > cd C:\EvoPlate\frontend
+
+8. Install frontend packages:
+   > yarn install
+   (or: npm install)
+
+9. Start frontend:
+   > yarn start
+   (or: npm start)
+
+10. Open browser: http://localhost:3000
+
+---
+
+NEXT STEPS
+==========
+
+After successful installation:
+
+1. Add your first camera:
+   - Go to Cameras menu
+   - Click "New Camera"
+   - Select type: Webcam (easiest to test)
+   - Set index to 0
+   - Save and start
+
+2. Check system settings:
+   - Go to Settings menu
+   - View available OCR engines
+   - System is ready to use!
+
+---
+
+NEED MORE HELP?
+===============
+
+Check log files:
+- Backend logs: backend/logs/
+- Frontend console: Press F12 in browser
+
+System requirements:
+- Windows 10/11
+- 4GB RAM minimum (8GB recommended)
+- 2GB free disk space
+- Internet connection for initial setup
+
+===================================================
+Enjoy EvoPlate Enterprise!
+===================================================
