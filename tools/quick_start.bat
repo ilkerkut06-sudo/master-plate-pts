@@ -16,7 +16,7 @@ if not exist "backend\venv" (
 )
 
 echo [1/3] Starting backend...
-start "EvoPlate Backend" cmd /k "cd /d %~dp0..\backend && call venv\Scripts\activate.bat && python run.py"
+start "EvoPlate Backend" cmd /k "cd /d %~dp0..\backend && call venv\Scripts\activate.bat && python run_simple.py"
 timeout /t 5 >nul
 
 echo [2/3] Starting frontend...
