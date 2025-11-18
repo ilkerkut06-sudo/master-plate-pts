@@ -133,7 +133,7 @@ timeout /t 3 >nul
 
 REM Start backend
 echo Starting backend...
-start "EvoPlate Backend" cmd /k "cd /d %~dp0..\backend && call venv\Scripts\activate.bat && python run.py"
+start "EvoPlate Backend" cmd /k "cd /d %~dp0..\backend && call venv\Scripts\activate.bat && python run_simple.py"
 timeout /t 5 >nul
 
 REM Start frontend
